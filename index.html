@@ -4,9 +4,18 @@
 <body>
   <div id="app">
     <ul>
-      <button @click="calculateTotal('蘋果')">蘋果 ({{ fruitPrices['蘋果'] }}元)</button>
-      <button @click="calculateTotal('香蕉')">香蕉 ({{ fruitPrices['香蕉'] }}元)</button>
-      <button @click="calculateTotal('芒果')">芒果 ({{ fruitPrices['芒果'] }}元)</button>
+      <button @click="calculateTotal('蘋果')">
+        <img src="https://i.imgur.com/kFlO2Ev.png" alt="蘋果" style="width: 100px; height: 100px;"> 蘋果 ({{ fruitPrices['蘋果']
+        }}元)
+      </button>
+      <button @click="calculateTotal('香蕉')">
+        <img src="https://i.imgur.com/gPNf02j.jpeg" alt="香蕉" style="width: 100px; height: 100px;"> 香蕉 ({{
+        fruitPrices['香蕉'] }}元)
+      </button>
+      <button @click="calculateTotal('芒果')">
+        <img src="https://i.imgur.com/GO8UOtZ.jpeg" alt="芒果" style="width: 100px; height: 100px;"> 芒果 ({{
+        fruitPrices['芒果'] }}元)
+      </button>
       <p>你選擇的水果: {{ formattedFruits }}</p>
       <p>總價: {{ totalPrice }} 元</p>
     </ul>
