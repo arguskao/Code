@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div id="app">
+    <ul>
+      <button @click="calculateTotal('蘋果')">蘋果 ({{ fruitPrices['蘋果'] }}元)</button>
+      <button @click="calculateTotal('香蕉')">香蕉 ({{ fruitPrices['香蕉'] }}元)</button>
+      <button @click="calculateTotal('芒果')">芒果 ({{ fruitPrices['芒果'] }}元)</button>
+      <p>你選擇的水果: {{ formattedFruits }}</p>
+      <p>總價: {{ totalPrice }} 元</p>
+    </ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.33/dist/vue.global.js"></script>
+
+  <script>
+    var app = Vue.createApp({
+      data: function () {
+        return {
+          selectedFruits: [],
+          fruitPrices: {
+            蘋果: 5,
+            香蕉: 10,
+            芒果: 20
+          },
+          totalPrice: 0
+        };
+      },
+      computed: {
+        formattedFruits: function () {
+          let counts = {};
+          for (let fruit of this.selectedFruits) {
+            counts[fruit] = (counts[fruit] || 0) + 1;
+          }
+          let formatted = Object.keys(counts).map(fruit => `${fruit} x${counts[fruit]}`);
+          return formatted.join(', ');
+        }
+      },
+      methods: {
+        calculateTotal: function (fruit) {
+          this.selectedFruits.push(fruit);
+          this.totalPrice += this.fruitPrices[fruit];
+        }
+      }
+    });
+    app.mount('#app');
+  </script>
+</body>
+
+</html>
